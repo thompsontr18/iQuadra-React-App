@@ -11,8 +11,8 @@ import { FaArrowUp } from 'react-icons/fa';
 const Footer=()=>{
     return(
         <div>
+            <br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br>
             <footer className="footer bg-[#043d5d] rounded shadow p-5">
-                {/* w-full max-w-screen-xl */}
                 <div className="outerDiv p-4 "> 
                     <div className="innerDiv sm:flex sm:items-center sm:justify-between">
                         <a className="logo flex items-center mb-4 sm:mb-0" href="https://iquadra.com/" target="_blank">

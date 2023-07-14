@@ -7,10 +7,10 @@ import { FaArrowUp } from 'react-icons/fa';
 
 
 
+
 const Footer=()=>{
     return(
-        <div>
-            <br></br>
+        <div  className="w-960px mx-auto my-0 relative" >
             <footer className="footer bg-[#043d5d] rounded shadow p-5">
                 <div className="outerDiv w-full max-w-screen-xl p-4 ">
                     <div className="innerDiv sm:flex sm:items-center sm:justify-between">

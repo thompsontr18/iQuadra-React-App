@@ -3,12 +3,14 @@ import { ReactDOM } from "react";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Home from "./components/Home/Home";
 
 function App() {
   return (
     <div className="App">
       <Router>
         <Header/>
+        <Home/>
         {/* <div className="container">
           <Routes>
             <Route path={process.env.PUBLIC_URL} exact Component={Home} />

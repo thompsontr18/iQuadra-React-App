@@ -4,9 +4,9 @@ import RightColumn from "./RightColumn";
 
 const HomeTT = () => {
   return (
-    <div className="homeMj flex  bg-blue-100">
+    <div className="homeMj flex  bg-blue-300">
         <LeftColumn/>
-        <div className="border-l border-blue-950"></div>
+        <div className="border-l border-[#043d5d]"></div>
         <RightColumn/>
     </div>
   );

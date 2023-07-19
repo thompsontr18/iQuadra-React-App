@@ -1,29 +1,30 @@
 import React from "react";
 
 const LeftColumn = () => {
-  return (
-    <div className="leftColumn w-1/3 p-4">
-      <h2 class="text-xl font-bold mb-4 text-[#043d5d]">Filters</h2>
-      <form action="">
-        <div className="flex items-center">
-          <select className="px-4 py-2 border border-gray-300 rounded-l-md">
-            <option value="college">College</option>
-            <option value="program">Major</option>
-            <option value="courses">Courses</option>
-            <option value="people">People</option>
-          </select>
-          <input
-            type="text"
-            placeholder="Search..."
-            className="px-4 py-2 border border-l-0 border-gray-300"
-          />
-          <button className="px-4 py-2 bg-[#043d5d] text-white rounded-r-md">
-            Search
-          </button>
+	return (
+	<div className="leftColumn w-1/3 pl-4 pr-2 pt-4">
+		<h2 class="text-xl font-bold mb-4 text-[#043d5d] text-center">Search Criteria</h2>
+		<div>
+			<div class="container rounded-lg">
+				<form>
+					<div class="sm:flex items-center bg-white rounded-lg overflow-hidden px-2 py-1">
+						<div class="py-2">
+							<select id="options" class="pl-2 py-2 border-[#D3D3D3] rounded-lg outline-none bg-[#D3D3D3] text-[#5A5A5A] text-xs mr-3">
+								<option value="Select" disabled selected >Select</option>
+								<option value="Colleges">Colleges</option>
+								<option value="Majors">Majors</option>
+								<option value="Courses">Courses</option>
+								<option value="Professors">Professors</option>
+							</select>
+							<input class="text-[#043d5d] text-xs outline-none border-none  mr-10 md:w-fit" type="text" placeholder="Search" />
+							<button class="border-[#D3D3D3] bg-[#D3D3D3] text-[#5A5A5A] text-xs rounded-lg px-2 py-2 ml-3">Search</button>
+						</div>
+					</div>
+				</form>
+			</div>
         </div>
-      </form>
-    </div>
-  );
+	</div>
+	);
 };
 
 export default LeftColumn;

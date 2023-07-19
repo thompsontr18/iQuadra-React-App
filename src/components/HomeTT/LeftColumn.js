@@ -4,14 +4,13 @@ import Popup from 'reactjs-popup';
 const LeftColumn = () => {
 	return (
 	<div className="leftColumn w-1/3 pl-4 pr-2 pt-4">
-		<div className="">
 		<h2 className="heading text-xl font-bold mb-4 text-[#043d5d] text-center">
 			Search Criteria
             <Popup trigger=
-                {<button className="bg-white rounded-full text-sm px-1 float-right mt-1">?</button>}
+                {<button className="bg-[#D3D3D3] rounded-full text-sm text-[#5A5A5A] px-1 float-right mt-1">?</button>}
                 position="top center">
                 <div>
-					<p className="bg-white rounded-sm text-[#043d5d] text-center text-sm px-2">
+					<p className="bg-[#D3D3D3] rounded-sm text-[#5A5A5A] text-center text-sm px-2">
 						Fill out the search box/boxes accordingly.<br></br>
 						More than one search box can be used<br></br>
 						to further narrow your results.
@@ -19,9 +18,7 @@ const LeftColumn = () => {
 				</div>
             </Popup>
 		</h2>
-		</div>
-		
-		
+
 		<div>
 			<div className="container rounded-lg">
 				<form>

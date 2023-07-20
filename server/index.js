@@ -4,27 +4,27 @@ import mysql from "mysql2";
 const app=express();
 
 const db= mysql.createConnection({
-    host:"localhost",
-    user:"root",
-    password:"password",
-    database:"collegedata"
+	host:"localhost",
+	user:"root",
+	password:"password",
+	database:"collegedata"
 });
 
 app.get("/",(req, res)=>{
-    res.json("Hello, I'm the backend");
+	res.json("Backend is working properly");
 });
 
 app.get("/search", (req, res) => {
-    const q = "SELECT * FROM communitycollegedata";
-    db.query(q, (err, data) => {
-      if (err) {
-        console.log(err);
-        return res.json(err);
-      }
-      return res.json(data);
-    });
+	const q = "SELECT * FROM communitycollegedata";
+	db.query(q, (err, data) => {
+	  if (err) {
+		console.log(err);
+		return res.json(err);
+	  }
+	  return res.json(data);
+	});
   });
 
 app.listen(8800, ()=>{
-    console.log("Connected to backend");
+	console.log("Connected to backend");
 });

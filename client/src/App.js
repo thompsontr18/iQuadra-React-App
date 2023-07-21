@@ -1,28 +1,21 @@
-import React from "react";
-import { ReactDOM } from "react";
+import React, { useEffect } from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import HomeTT from "./components/HomeTT/HomeTT";
-import HomeMj from "./components/HomeMJ/HomeMj"
-
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import HomeMj from "./components/HomeMJ/HomeMj";
 
 function App() {
   return (
     <div className="App bg-blue-300">
-      <Router>
-        <Header/>
-        <HomeTT/>
-        <HomeMj/>
-        {/* <div className="container">
+      <Header />
+        <BrowserRouter>
           <Routes>
-            <Route path={process.env.PUBLIC_URL} exact Component={Home} />
-            <Route path={process.env.PUBLIC_URL+"movie/:imdbID"} Component={MoveDetails} />
-            <Route path={process.env.PUBLIC_URL+"*"} Component={PageNotFound} />
+            <Route path="/" element={<HomeMj/>} />
           </Routes>
-        </div> */}
-        <Footer/>
-      </Router>
+        </BrowserRouter>
+
+      <Footer />
     </div>
   );
 }

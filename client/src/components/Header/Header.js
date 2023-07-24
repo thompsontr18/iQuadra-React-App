@@ -4,7 +4,7 @@ import Logo from "../../resources/iquadra.png";
 const Header = () => {
   return (
     <div className="header bg-[#043d5d] justify-between flex items-center rounded shadow padding px-10">
-      <div className="logo flex justify-center items-center w-1/4 p-10">
+      <div className="logo flex justify-center items-center w-1/4 px-10 py-5">
         <img className="w-20 h-20 rounded-xl" src={Logo} alt="logo.png" />
       </div>
       <div className="headerTitle w-3/4 text-center">

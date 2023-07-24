@@ -19,8 +19,8 @@ const RightColumn = () => {
   return (
     <div className="rightColumn w-2/3 p-4">
       <h2 class="text-xl font-bold mb-4 text-[#043d5d] text-center">Results</h2>
-      <div class="p-4 overflow-auto">
-        <table class="w-full divide-y">
+      <div class="px-4 h-96 overflow-y-scroll overflow-scroll">
+        <table class="table-auto">
           <thead>
             <tr>
               <th class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
@@ -34,16 +34,16 @@ const RightColumn = () => {
               </th>
             </tr>
           </thead>
-          <tbody class="bg-white divide-y divide-gray-200">
+          <tbody class="bg-white">
             {records.map((record) => (
               <tr
                 key={
                   record.Colleges + "-" + record.Majors + "-" + record.Courses
                 }
               >
-                <td class="px-6 py-4 whitespace-nowrap">{record.Colleges}</td>
-                <td class="px-6 py-4 whitespace-nowrap">{record.Majors}</td>
-                <td class="px-6 py-4 whitespace-nowrap">{record.Courses}</td>
+                <td class="px-2 py-1 border whitespace-nowrap">{record.Colleges}</td>
+                <td class="px-2 py-1 border whitespace-nowrap">{record.Majors}</td>
+                <td class="px-2 py-1 border whitespace-nowrap">{record.Courses}</td>
               </tr>
             ))}
           </tbody>

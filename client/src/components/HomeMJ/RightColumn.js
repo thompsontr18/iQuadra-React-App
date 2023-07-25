@@ -1,21 +1,16 @@
 import React from "react";
-import { useState, useEffect } from "react";
-import axios from "axios";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchAsyncRecords, getAllRecords } from "../../features/recordSlice";
 
 const RightColumn = () => {
-  const [records, setRecords] = useState([]);
+  const records = useSelector(getAllRecords);
+  console.log(records);
+
+  const dispatch = useDispatch();
   useEffect(() => {
-    const fetchRecords = async () => {
-      try {
-        const res = await axios.get("http://localhost:8800/");
-        setRecords(res.data);
-        console.log(res.data);
-      } catch (err) {
-        console.log(err);
-      }
-    };
-    fetchRecords();
-  }, []);
+    dispatch(fetchAsyncRecords())
+  }, [dispatch]);
   return (
     <div className="rightColumn w-2/3 p-4">
       <h2 class="text-xl font-bold mb-4 text-[#043d5d] text-center">Results</h2>
@@ -35,17 +30,29 @@ const RightColumn = () => {
             </tr>
           </thead>
           <tbody class="bg-white">
-            {records.map((record) => (
-              <tr
-                key={
-                  record.Colleges + "-" + record.Majors + "-" + record.Courses
-                }
-              >
-                <td class="px-2 py-1 border whitespace-nowrap">{record.Colleges}</td>
-                <td class="px-2 py-1 border whitespace-nowrap">{record.Majors}</td>
-                <td class="px-2 py-1 border whitespace-nowrap">{record.Courses}</td>
+            
+            {records.map((item, index) => (
+              <tr key={index}>
+                <td class="px-2 py-1 border whitespace-nowrap">
+                  {item.Colleges}
+                </td>
+                <td class="px-2 py-1 border whitespace-nowrap">
+                  {item.Colleges}
+                </td>
+                <td class="px-2 py-1 border whitespace-nowrap">
+                  {item.Colleges}
+                </td>
               </tr>
             ))}
+            {/* <tr
+              key={
+                record.Colleges + "-" + record.Majors + "-" + record.Courses
+              }
+            >
+              <td class="px-2 py-1 border whitespace-nowrap">{record.Colleges}</td>
+              <td class="px-2 py-1 border whitespace-nowrap">{record.Majors}</td>
+              <td class="px-2 py-1 border whitespace-nowrap">{record.Courses}</td>
+            </tr> */}
           </tbody>
         </table>
       </div>

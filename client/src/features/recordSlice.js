@@ -11,6 +11,19 @@ export const fetchAsyncRecords = createAsyncThunk(
   }
 );
 
+export const fetchSearchRecords=createAsyncThunk(
+  "records/fetchSearchRecords",
+  async (value) => {
+    // console.log("Inside Slice");
+    // console.log(value);
+    // console.log(`http://localhost:8800/search?Category=${value.Category}&SearchFeild=${value.SearchFeild}`);
+    const res = await axios.get(`http://localhost:8800/search?Category=${value.Category}&SearchFeild=${value.SearchFeild}`).catch((err)=>{
+      console.log(err);
+    });
+    return res.data;
+  }
+)
+
 const initialState = {
   records: [],
 };
@@ -31,6 +44,16 @@ const recordSlice = createSlice({
     },
     [fetchAsyncRecords.rejected]:()=>{
         console.log("rejected");
+    },
+    [fetchSearchRecords.pending]:()=>{
+      console.log("Pending Query");
+    },
+    [fetchSearchRecords.fulfilled]:(state, {payload})=>{
+      console.log("Fetched Query Successfully");
+      return {...state, records:payload}
+    },
+    [fetchSearchRecords.rejected]:()=>{
+      console.log("Rejected");
     }
   }
 });

@@ -25,8 +25,19 @@ app.get("/",(req, res)=>{
   });
 });
 
+app.get("/search",(req, res)=>{
+  const q = `SELECT * FROM communitycollegedata where ${req.query.Category} like "%${req.query.SearchFeild}%"`;
+  db.query(q, (err, data) => {
+    if (err) {
+      console.log(err);
+      return res.json(err);
+    }
+    return res.json(data);
+  });
+});
+
 // app.get("/search", (req, res) => {
-    
+//   console.log(req.query);    
 //   });
 
 app.listen(8800, ()=>{

@@ -5,14 +5,14 @@ import { fetchAsyncRecords, getAllRecords } from "../../features/recordSlice";
 
 const RightColumn = () => {
   const records = useSelector(getAllRecords);
-  // console.log(records);
+  console.log(records);
 
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchAsyncRecords())
   }, [dispatch]);
   return (
-    <div className="rightColumn w-2/3 p-4 flex flex-col">
+    <div className="rightColumn w-3/4 p-4 flex flex-col">
       <h2 className="text-xl font-bold mb-4 text-[#043d5d] text-center">Results</h2>
       <div className="px-4 h-96 flex flex-grow overflow-y-scroll overflow-scroll">
         <table className="table-auto">

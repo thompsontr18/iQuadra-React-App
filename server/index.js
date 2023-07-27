@@ -15,7 +15,7 @@ const db= mysql.createConnection({
 });
 
 app.get("/",(req, res)=>{
-  const q = "SELECT * FROM communitycollegedata";
+  const q = "SELECT * FROM communitycollegedata;";
   db.query(q, (err, data) => {
     if (err) {
       console.log(err);
@@ -26,7 +26,7 @@ app.get("/",(req, res)=>{
 });
 
 app.get("/search",(req, res)=>{
-  const q = `SELECT * FROM communitycollegedata where ${req.query.Category} like "%${req.query.SearchFeild}%"`;
+  const q = `SELECT * FROM communitycollegedata where ${req.query.Category} like "%${req.query.SearchFeild}%";`;
   db.query(q, (err, data) => {
     if (err) {
       console.log(err);

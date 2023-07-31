@@ -24,21 +24,27 @@ export const fetchSearchInput = createAsyncThunk(
     const data = thunkAPI.getState().records.records;
     console.log(value);
     return data.filter((item) => {
-      return value.CollegeSearch === ""
+      return value.CollegeSearch.toLowerCase() === ""
         ? item
-        : item.Colleges.includes(value.CollegeSearch);
+        : item.Colleges.toLowerCase().includes(value.CollegeSearch.toLowerCase());
     }).filter((item) => {
-      return value.MajorsSearch === ""
+      return value.MajorsSearch.toLowerCase() === ""
         ? item
-        : item.Majors.includes(value.MajorsSearch);
+        : item.Majors.toLowerCase().includes(value.MajorsSearch.toLowerCase());
     }).filter((item) => {
-      return value.CourseSearch === ""
+      return value.CourseSearch.toLowerCase() === ""
         ? item
-        : item.Courses.includes(value.CourseSearch);
+        : item.Courses.toLowerCase().includes(value.CourseSearch.toLowerCase());
     }).filter((item) => {
-      return value.PersonSearch === ""
+      return value.PersonSearch.toLowerCase() === ""
         ? item
-        : item.Details.includes(value.PersonSearch);
+        : item.Details.toLowerCase().includes(value.PersonSearch.toLowerCase());
+    }).sort((a, b) =>{
+      if (value.SortOrder === "Ascending") {
+        return a[value.SortBy].localeCompare(b[value.SortBy]);
+      } else {
+        return b[value.SortBy].localeCompare(a[value.SortBy]);
+      }
     });
   }
 );
@@ -89,7 +95,7 @@ const recordSlice = createSlice({
     },
     [fetchSearchInput.fulfilled]: (state, { payload }) => {
       console.log("Fetched Colleges Successfully");
-      console.log(payload.length);
+      console.log(payload);
       return { ...state, display: payload };
     },
     [fetchSearchInput.rejected]: (state, action) => {

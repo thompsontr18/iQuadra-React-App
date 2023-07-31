@@ -5,7 +5,6 @@ import { fetchAsyncRecords, getAllRecords } from "../../features/recordSlice";
 
 const RightColumn = () => {
   const records = useSelector(getAllRecords);
-  console.log(records);
 
   const dispatch = useDispatch();
   useEffect(() => {

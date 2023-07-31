@@ -3,11 +3,11 @@ import Logo from "../../resources/iquadra.png";
 
 const Header = () => {
   return (
-    <div className="header bg-[#043d5d] justify-between flex items-center rounded shadow padding px-10">
-      <div className="logo flex justify-center items-center w-1/4 px-10 py-5">
+    <div className="header bg-[#043d5d] justify-between flex items-center rounded shadow padding">
+      <div className="logo flex-shrink-0 px-6 py-5">
         <img className="w-20 h-20 rounded-xl" src={Logo} alt="logo.png" />
       </div>
-      <div className="headerTitle w-3/4 text-center">
+      <div className="headerTitle flex-grow text-center">
         <h1 className="font-sans font-bold text-blue-300 text-4xl">
           iQuadra Colleges Marketing Portal
         </h1>

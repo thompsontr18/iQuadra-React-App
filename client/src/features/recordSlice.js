@@ -51,7 +51,7 @@ export const fetchSearchInput = createAsyncThunk(
 
 const initialState = {
   records: [],
-  display: [],
+  display: []
 };
 
 const recordSlice = createSlice({
@@ -69,16 +69,6 @@ const recordSlice = createSlice({
     [fetchAsyncRecords.rejected]: () => {
       console.log("rejected");
     },
-    // [fetchSearchRecords.pending]: () => {
-    //   console.log("Pending Query");
-    // },
-    // [fetchSearchRecords.fulfilled]: (state, { payload }) => {
-    //   console.log("Fetched Query Successfully");
-    //   return { ...state, records: payload };
-    // },
-    // [fetchSearchRecords.rejected]: () => {
-    //   console.log("Rejected");
-    // },
     [fetchOriginalRecords.pending]: () => {
       console.log("Pending");
     },

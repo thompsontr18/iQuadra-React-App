@@ -3,7 +3,7 @@ import logo from "../../resources/iquadra.png"
 import { FaTwitter } from 'react-icons/fa';
 import { FaFacebookF } from 'react-icons/fa';
 import { FaLinkedinIn } from 'react-icons/fa';
-import { FaArrowUp } from 'react-icons/fa';
+import { HiDownload } from 'react-icons/hi';
 
 const Footer=()=>{
     return(
@@ -32,8 +32,8 @@ const Footer=()=>{
                                 </a>
                             </li>
                             <li>
-                                <a href="#" className="mr-12 hover:opacity-50 flex items-center mt-4">
-                                <FaArrowUp className="backToTop fill-white" size="2em"/>
+                                <a className="mr-12 hover:opacity-50 flex items-center mt-4">
+                                <HiDownload className="download fill-white" size="2em"/>
                                 </a>
                             </li>
                         </ul>

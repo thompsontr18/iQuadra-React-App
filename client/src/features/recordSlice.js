@@ -23,7 +23,7 @@ export const fetchSearchInput = createAsyncThunk(
   async (value, thunkAPI) => {
     const data = thunkAPI.getState().records.records;
     console.log(value);
-    return data.filter((item) => {
+    const filtered_data=data.filter((item) => {
       return value.CollegeSearch.toLowerCase() === ""
         ? item
         : item.Colleges.toLowerCase().includes(value.CollegeSearch.toLowerCase());
@@ -46,6 +46,17 @@ export const fetchSearchInput = createAsyncThunk(
         return b[value.SortBy].localeCompare(a[value.SortBy]);
       }
     });
+    const colmnData = filtered_data.map(item => {
+      return value.Columns.reduce((result, select, index) => {
+        if (select) {
+          const key = Object.keys(item)[index];
+          result[key] = item[key];
+        }
+        return result;
+      }, {});
+    });
+    console.log(colmnData);
+    return colmnData
   }
 );
 

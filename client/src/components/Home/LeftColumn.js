@@ -121,7 +121,7 @@ const LeftColumn = () => {
       <div className="grid grid-cols-2">
         {
           cols.map((col, ind) => (
-            <div className="flex items-center mx-3" key={ind}>
+            <div className="flex items-center mx-1" key={ind}>
               {/* <label
                 className="flex-shrink-0 pl-[0.15rem] pr-1"
               >{col}</label>

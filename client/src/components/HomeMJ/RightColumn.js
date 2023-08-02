@@ -27,36 +27,36 @@ const RightColumn = () => {
         <table className="table-auto">
           <thead>
             <tr className="border border-x-2 border-t-2 border-b border-[#043d5d]">
-              <th className="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-[#043d5d] uppercase tracking-wider">
+              <th className="px-6 bg-gray-50 text-left text-xs font-medium text-[#043d5d] uppercase tracking-wider">
                 College
               </th>
-              <th className="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-[#043d5d] uppercase tracking-wider">
+              <th className="px-6 bg-gray-50 text-left text-xs font-medium text-[#043d5d] uppercase tracking-wider">
                 Major
               </th>
-              <th className="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-[#043d5d] uppercase tracking-wider">
+              <th className="px-6 bg-gray-50 text-left text-xs font-medium text-[#043d5d] uppercase tracking-wider">
                 Course
               </th>
-              <th className="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-[#043d5d] uppercase tracking-wider">
+              <th className="px-6 bg-gray-50 text-left text-xs font-medium text-[#043d5d] uppercase tracking-wider">
                 Link
               </th>
-              <th className="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-[#043d5d] uppercase tracking-wider">
+              <th className="px-6 bg-gray-50 text-left text-xs font-medium text-[#043d5d] uppercase tracking-wider">
                 Business Email
               </th>
-              <th className="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-[#043d5d] uppercase tracking-wider">
+              <th className="px-6 bg-gray-50 text-left text-xs font-medium text-[#043d5d] uppercase tracking-wider">
                 Program Email
               </th>
-              <th className="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-[#043d5d] uppercase tracking-wider">
+              <th className="px-6 bg-gray-50 text-left text-xs font-medium text-[#043d5d] uppercase tracking-wider">
                 Business Phone Number
               </th>
-              <th className="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-[#043d5d] uppercase tracking-wider">
+              <th className="px-6 bg-gray-50 text-left text-xs font-medium text-[#043d5d] uppercase tracking-wider">
                 Program Phone Number
               </th>
-              <th className="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-[#043d5d] uppercase tracking-wider">
+              <th className="px-6 bg-gray-50 text-left text-xs font-medium text-[#043d5d] uppercase tracking-wider">
                 Contact Person
               </th>
             </tr>
           </thead>
-          <tbody className="bg-white">
+          <tbody className="bg-white text-sm">
 
             {records.map((item, index) => (
               <tr key={index} className="cursor-pointer hover:bg-blue-100 border" onClick={() => handleRowClick(item)}>

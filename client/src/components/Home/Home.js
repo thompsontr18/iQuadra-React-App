@@ -2,7 +2,7 @@ import React from "react";
 import LeftColumn from "./LeftColumn";
 import RightColumn from "./RightColumn";
 
-const HomeMj = () => {
+const Home = () => {
   return (
     <div className="homeMj flex flex-grow bg-blue-100">
       <LeftColumn />
@@ -12,4 +12,4 @@ const HomeMj = () => {
   );
 };
 
-export default HomeMj;
+export default Home;

@@ -26,7 +26,7 @@ const RightColumn = () => {
       <div className="px-4 h-96 flex flex-grow overflow-y-scroll overflow-scroll">
         <table className="table-auto">
           <thead>
-            <tr className="border border-x-2 border-t-2 border-b border-[#043d5d]">
+            <tr className="border border-x-2 border-t-2 border-b-2 border-[#043d5d]">
               <th className="px-6 bg-gray-50 text-left text-xs font-medium text-[#043d5d] uppercase tracking-wider">
                 College
               </th>

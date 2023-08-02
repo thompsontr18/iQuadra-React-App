@@ -7,7 +7,7 @@ const PopUp = ({ value, onClose }) => {
             <div className="bg-blue-100 p-4 rounded-lg w-3/4 h-4/5 overflow-auto">
 
                 <div className='collegeAndLink flex items-center'>
-                    <div className='w-11/12 flex'>
+                    <div className='w-11/12 flex items-center'>
                         <h1 className='text-[#043d5d] text-3xl font-bold underline decoration-blue-300 pr-5'>{value.Colleges}</h1>
                         <h2 className='text-[#043d5d] text-xl pr-5'>●</h2>
                         <h3 className='text-[#043d5d] text-lg underline'><a href={value.Link} target='_blank'>{value.Link}</a></h3>

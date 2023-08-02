@@ -13,7 +13,7 @@ const PopUp = ({ value, onClose }) => {
                         <h3 className='text-[#043d5d] text-lg underline'><a href={value.Link} target='_blank'>{value.Link}</a></h3>
                     </div>
                     <div className='float-right w-1/12'>
-                        <button className="text-white bg-[#043d5d] text-xs font-bold px-2 py-1 rounded-xl float-right" onClick={onClose}>X</button>
+                        <button className="text-red-700 border-2 border-red-700 rounded-2xl text-xs font-bold px-3 py-1 float-right" onClick={onClose}>X</button>
                     </div>
                 </div>
 
@@ -47,8 +47,8 @@ const PopUp = ({ value, onClose }) => {
                                 <textarea id="comment" rows="2" class="w-full px-0 text-[#043d5d] bg-white border-0 focus:ring-0" placeholder="Write a comment..."></textarea>
                             </div>
                             <div class="flex items-center justify-between px-3 py-2 border-t">
-                                <input type="reset" class="inline-flex float-right items-center py-1 px-2 text-center text-xs font-bold text-white bg-[#043d5d] rounded-xl" value="Clear"></input>
-                                <button type="submit" class="inline-flex float-right items-center py-2.5 px-4 text-center text-white bg-[#043d5d] rounded-lg">Post comment</button>
+                                <input type="reset" class="inline-flex float-right items-center px-2 text-center text-red-700  border-2 border-red-700 rounded-lg" value="Clear"></input>
+                                <button type="submit" class="inline-flex float-right items-center py-1.5 px-4 text-center text-white bg-[#043d5d] rounded-lg">Post comment</button>
                             </div>
                         </div>
                     </form>

@@ -4,7 +4,7 @@ import React from 'react';
 const PopUp = ({ value, onClose }) => {
     return (
         <div className="fixed inset-0 bg-opacity-50 bg-black flex items-center justify-center">
-            <div className="bg-blue-100 p-4 rounded-lg w-3/4">
+            <div className="bg-blue-100 p-4 rounded-lg w-3/4 h-4/5 overflow-auto">
 
                 <div className='collegeAndLink flex items-center'>
                     <div className='w-11/12 flex'>
@@ -31,16 +31,35 @@ const PopUp = ({ value, onClose }) => {
                 <div className='programDetails items-center my-10'>
                     <h2 className='text-[#043d5d] font-bold text-xl'>Program Details:</h2>
                     <div className='flex justify-start my-5'>
-                        <h4 className='text-[#043d5d]'><a href= {`mailto:${value.PEmail}`} target="_blank">{value.PEmail}</a></h4>
+                        <h4 className='text-[#043d5d] underline'><a href= {`mailto:${value.PEmail}`} target="_blank">{value.PEmail}</a></h4>
                         <h4>&emsp;&emsp;&emsp;</h4>
                         <h4 className='text-[#043d5d]'>{value.PPhone}</h4>
                     </div>
-                    <h4 className='mt-5 border-2 border-[#043d5d] rounded-lg bg-white px-2 py-2'>{value.Details}</h4>
+                    <h4 className='mt-5 border-2 border-[#043d5d] text-[#043d5d] rounded-lg bg-white px-2 py-2'>{value.Details}</h4>
                 </div>
 
                 <div className='notesDiv items-center my-10'>
                     <h2 className='text-[#043d5d] font-bold text-xl mb-5'>Notes:</h2>
-                    <input type="text" placeholder='Enter Notes Here...' className="block w-full p-4 text-xs border-2 border-[#043d5d] rounded-lg bg-white focus:ring-[#043d5d]  focus:border-[#043d5d]"></input>
+                    <form>
+                        <div class="w-full mb-4 border-2 border-[#043d5d] rounded-lg bg-gray-50 ">
+                            <div class="px-4 py-2 bg-white rounded-t-lg">
+                                <label for="comment" class="sr-only">Your comment</label>
+                                <textarea id="comment" rows="2" class="w-full px-0 text-[#043d5d] bg-white border-0 focus:ring-0" placeholder="Write a comment..."></textarea>
+                            </div>
+                            <div class="flex items-center justify-between px-3 py-2 border-t">
+                                <input type="reset" class="inline-flex float-right items-center py-1 px-2 text-center text-xs font-bold text-white bg-[#043d5d] rounded-xl" value="Clear"></input>
+                                <button type="submit" class="inline-flex float-right items-center py-2.5 px-4 text-center text-white bg-[#043d5d] rounded-lg">Post comment</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <div className='businessDetails items-center my-10'>
+                    <div className='flex justify-start'>
+                        <h4 className='text-[#043d5d] underline'><a href= {`mailto:${value.BEmail}`} target="_blank">{value.BEmail}</a></h4>
+                        <h4>&emsp;&emsp;&emsp;</h4>
+                        <h4 className='text-[#043d5d]'>{value.BPhone}</h4>
+                    </div>
                 </div>
 
                 {/* {Object.entries(value).map(([key, val]) => (

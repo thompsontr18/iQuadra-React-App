@@ -112,8 +112,8 @@ const LeftColumn = () => {
           onChange={handleInputChange}
           className="border rounded border-gray-300 boreder-l-0 px-2 py-1 rounded-r-full w-1/3"
         >
-          <option value="Ascending">ASC</option>
-          <option value="Descending">DSC</option>
+          <option value="Ascending">A-Z</option>
+          <option value="Descending">Z-A</option>
         </select>
 
       </div>

@@ -28,7 +28,11 @@ const RightColumn = () => {
       <h2 className="text-xl font-bold mb-4 text-[#043d5d] text-center">Results</h2>
       {
         loading === true ? (
-          <h1>LOADIN</h1>
+            <div class="bg-white flex space-x-2 p-5 top-1/3 relative rounded-full justify-center items-center mx-96">
+              <div class="bg-[#043d5d] w-4 h-4 rounded-full animate-bounce animation-delay-100"></div>
+              <div class="bg-[#043d5d] w-4 h-4 rounded-full animate-bounce animation-delay-200"></div>
+              <div class="bg-[#043d5d] w-4 h-4 rounded-full animate-bounce animation-delay-300"></div>
+            </div>
         )
           : (
             <div className="px-4 h-96 flex flex-grow overflow-y-scroll overflow-scroll">

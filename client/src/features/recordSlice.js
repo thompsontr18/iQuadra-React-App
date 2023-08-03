@@ -7,6 +7,7 @@ export const fetchAsyncRecords = createAsyncThunk(
     const res = await axios.get("http://localhost:8800/").catch((err) => {
       console.log(err);
     });
+    console.log("calling api");
     return res.data;
   }
 );
@@ -22,7 +23,6 @@ export const fetchSearchInput = createAsyncThunk(
   "records/fetchSearchInput",
   async (value, thunkAPI) => {
     const data = thunkAPI.getState().records.records;
-    console.log(value);
     const filtered_data=data.filter((item) => {
       return value.CollegeSearch.toLowerCase() === ""
         ? item
@@ -55,14 +55,14 @@ export const fetchSearchInput = createAsyncThunk(
         return result;
       }, {});
     });
-    console.log(colmnData);
     return colmnData
   }
 );
 
 const initialState = {
   records: [],
-  display: []
+  display: [],
+  loading: true
 };
 
 const recordSlice = createSlice({
@@ -70,34 +70,36 @@ const recordSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: {
-    [fetchAsyncRecords.pending]: () => {
+    [fetchAsyncRecords.pending]: (state) => {
       console.log("Pending");
+      return {...state, loading: true};
     },
     [fetchAsyncRecords.fulfilled]: (state, { payload }) => {
       console.log("Fetched Successfully");
-      return { ...state, records: payload, display: payload };
+      return { ...state, records: payload, display: payload, loading: false };
     },
     [fetchAsyncRecords.rejected]: () => {
       console.log("rejected");
     },
-    [fetchOriginalRecords.pending]: () => {
+    [fetchOriginalRecords.pending]: (state) => {
       console.log("Pending");
+      return {...state, loading: true};
     },
     [fetchOriginalRecords.fulfilled]: (state, { payload }) => {
       console.log("Fetched Originals Successfully");
-      return { ...state, display: payload };
+      return { ...state, display: payload, loading: false };
     },
     [fetchOriginalRecords.rejected]: (state, action) => {
       console.log("rejected");
       console.log(action.error);
     },
-    [fetchSearchInput.pending]: () => {
+    [fetchSearchInput.pending]: (state) => {
       console.log("Pending");
+      return {...state, loading: true};
     },
     [fetchSearchInput.fulfilled]: (state, { payload }) => {
       console.log("Fetched Colleges Successfully");
-      console.log(payload);
-      return { ...state, display: payload };
+      return { ...state, display: payload, loading: false};
     },
     [fetchSearchInput.rejected]: (state, action) => {
       console.log("Colleges rejected ");
@@ -108,4 +110,5 @@ const recordSlice = createSlice({
 
 export const { addRecords } = recordSlice.actions;
 export const getAllRecords = (state) => state.records.display;
+export const getLoadStatus=(state)=> state.records.loading;
 export default recordSlice.reducer;

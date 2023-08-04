@@ -37,7 +37,6 @@ const LeftColumn = () => {
         [name]: value,
       }));
     }
-    
     setClear(false);
     setInitialRender(false);
   };

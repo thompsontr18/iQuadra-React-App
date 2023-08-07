@@ -10,7 +10,7 @@ const PopUp = ({ value, onClose }) => {
                     <div className='w-11/12 flex items-center'>
                         <h1 className='text-[#043d5d] text-3xl font-bold underline decoration-blue-300 pr-5'>{value.Colleges}</h1>
                         <h2 className='text-[#043d5d] text-xl pr-5'>●</h2>
-                        <h3 className='text-[#043d5d] text-lg underline'><a href={value.Link} target='_blank'>{value.Link}</a></h3>
+                        <h3 className='text-[#043d5d] text-lg underline'><a href={value.Link} target='_blank' rel='noreferrer'>{value.Link}</a></h3>
                     </div>
                     <div className='float-right w-1/12'>
                         <button className="text-red-700 border-2 border-red-700 rounded-2xl text-xs font-bold px-3 py-1 float-right" onClick={onClose}>X</button>
@@ -31,7 +31,7 @@ const PopUp = ({ value, onClose }) => {
                 <div className='programDetails items-center my-10'>
                     <h2 className='text-[#043d5d] font-bold text-xl'>Program Details:</h2>
                     <div className='flex justify-start my-5'>
-                        <h4 className='text-[#043d5d] underline'><a href= {`mailto:${value.PEmail}`} target="_blank">{value.PEmail}</a></h4>
+                        <h4 className='text-[#043d5d] underline'><a href= {`mailto:${value.PEmail}`} target="_blank" rel='noreferrer'>{value.PEmail}</a></h4>
                         <h4>&emsp;&emsp;&emsp;</h4>
                         <h4 className='text-[#043d5d]'>{value.PPhone}</h4>
                     </div>
@@ -56,7 +56,7 @@ const PopUp = ({ value, onClose }) => {
 
                 <div className='businessDetails items-center my-10'>
                     <div className='flex justify-start'>
-                        <h4 className='text-[#043d5d] underline'><a href= {`mailto:${value.BEmail}`} target="_blank">{value.BEmail}</a></h4>
+                        <h4 className='text-[#043d5d] underline'><a href= {`mailto:${value.BEmail}`} target="_blank" rel='noreferrer'>{value.BEmail}</a></h4>
                         <h4>&emsp;&emsp;&emsp;</h4>
                         <h4 className='text-[#043d5d]'>{value.BPhone}</h4>
                     </div>

@@ -1,7 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import postComment from '../../features/recordSlice';
 
 
 const PopUp = ({ value, onClose }) => {
+    const [commentValue, setCommentValue]=useState('');
+    const dispatch = useDispatch();
+    const handleSubmitComment = (event) => {
+        event.preventDefault();
+        dispatch(postComment({
+            Comment:commentValue,
+            College:value.Colleges,
+            Major:value.Majors,
+            Course:value.Courses,
+        }));
+      };
+    const handleCommentChange = (event) => {
+        setCommentValue(event.target.value);
+    };
     return (
         <div className="fixed inset-0 bg-opacity-50 bg-black flex items-center justify-center">
             <div className="bg-blue-100 p-4 rounded-lg w-3/4 h-4/5 overflow-auto">
@@ -44,16 +60,15 @@ const PopUp = ({ value, onClose }) => {
                         <div class="w-full mb-4 border-2 border-[#043d5d] rounded-lg bg-gray-50 ">
                             <div class="px-4 py-2 bg-white rounded-t-lg">
                                 <label for="comment" class="sr-only">Your comment</label>
-                                <textarea id="comment" rows="2" class="w-full px-0 text-[#043d5d] bg-white border-0 focus:ring-0" placeholder="Write a comment..."></textarea>
+                                <textarea id="comment" rows="2" class="w-full px-0 text-[#043d5d] bg-white border-0 focus:ring-0" placeholder="Write a comment..." value={commentValue} onChange={handleCommentChange}></textarea>
                             </div>
                             <div class="flex items-center justify-between px-3 py-2 border-t">
-                                <input type="reset" class="inline-flex float-right items-center px-2 text-center text-red-700  border-2 border-red-700 rounded-lg" value="Clear"></input>
-                                <button type="submit" class="inline-flex float-right items-center py-1.5 px-4 text-center text-white bg-[#043d5d] rounded-lg">Post comment</button>
+                                <input type="reset" class="inline-flex float-right items-center px-2 text-center text-red-700  border-2 border-red-700 rounded-lg cursor-pointer" value="Clear"></input>
+                                <button type="submit" class="inline-flex float-right items-center py-1.5 px-4 text-center text-white bg-[#043d5d] rounded-lg" onSubmit={handleSubmitComment}>Save</button>
                             </div>
                         </div>
                     </form>
                 </div>
-
                 <div className='businessDetails items-center my-10'>
                     <div className='flex justify-start'>
                         <h4 className='text-[#043d5d] underline'><a href= {`mailto:${value.BEmail}`} target="_blank" rel='noreferrer'>{value.BEmail}</a></h4>
@@ -61,14 +76,6 @@ const PopUp = ({ value, onClose }) => {
                         <h4 className='text-[#043d5d]'>{value.BPhone}</h4>
                     </div>
                 </div>
-
-                {/* {Object.entries(value).map(([key, val]) => (
-                    <div key={key}>
-                        <span>{key}: </span>
-                        <span>{val}</span>
-                    </div>
-                ))} */}
-
             </div>
         </div>
     );

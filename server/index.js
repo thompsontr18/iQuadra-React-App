@@ -25,6 +25,18 @@ app.get("/",(req, res)=>{
   });
 });
 
+app.post("/comment",(req, res)=>{
+  const { comment } = req.body;
+  const q = "INSERT INTO communitycollegedata (Notes) VALUES (?);";
+  db.query(q, (err, data) => {
+    if (err) {
+      console.log(err);
+      return res.json(err);
+    }
+    return res.json(data);
+  });
+});
+
 app.get("/search",(req, res)=>{
   const q = `SELECT * FROM communitycollegedata where ${req.query.Category} like "%${req.query.SearchFeild}%";`;
   db.query(q, (err, data) => {

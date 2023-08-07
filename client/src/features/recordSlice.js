@@ -12,6 +12,18 @@ export const fetchAsyncRecords = createAsyncThunk(
   }
 );
 
+export const postComment= createAsyncThunk(
+  "records/postComment",
+  async(value)=>{
+    const res = await axios.post("http://localhost:8800/comment",{value}).catch((err) => {
+      console.log(err);
+    });
+    console.log('Comment Posted:');
+    return res.data;
+  }
+);
+
+
 export const fetchOriginalRecords = createAsyncThunk(
   "records/fetchOriginalRecords",
   async (value, thunkAPI) => {
@@ -105,6 +117,17 @@ const recordSlice = createSlice({
       console.log("Colleges rejected ");
       console.log(action.error);
     },
+    [postComment.pending]:(state)=>{
+      console.log("Pending");
+    },
+    [postComment.fulfilled]:(state,{payload})=>{
+      console.log("Fetched Records After Post");
+      return { ...state, records: payload, display: payload};
+    },
+    [postComment.rejected]:(state, action)=>{
+      console.log("Post Comment Failed");
+      console.log(action.error);
+    }
   },
 });
 

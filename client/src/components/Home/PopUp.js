@@ -1,18 +1,18 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import postComment from '../../features/recordSlice';
+import { postComment } from '../../features/recordSlice';
 
 
 const PopUp = ({ value, onClose }) => {
-    const [commentValue, setCommentValue]=useState('');
+    const [commentValue, setCommentValue]=useState("");
     const dispatch = useDispatch();
     const handleSubmitComment = (event) => {
         event.preventDefault();
         dispatch(postComment({
-            Comment:commentValue,
-            College:value.Colleges,
-            Major:value.Majors,
-            Course:value.Courses,
+            "Comment":commentValue,
+            "College":value.Colleges,
+            "Major":value.Majors,
+            "Course":value.Courses,
         }));
       };
     const handleCommentChange = (event) => {
@@ -57,14 +57,14 @@ const PopUp = ({ value, onClose }) => {
                 <div className='notesDiv items-center my-10'>
                     <h2 className='text-[#043d5d] font-bold text-xl mb-5'>Notes:</h2>
                     <form>
-                        <div class="w-full mb-4 border-2 border-[#043d5d] rounded-lg bg-gray-50 ">
-                            <div class="px-4 py-2 bg-white rounded-t-lg">
-                                <label for="comment" class="sr-only">Your comment</label>
-                                <textarea id="comment" rows="2" class="w-full px-0 text-[#043d5d] bg-white border-0 focus:ring-0" placeholder="Write a comment..." value={commentValue} onChange={handleCommentChange}></textarea>
+                        <div className="w-full mb-4 border-2 border-[#043d5d] rounded-lg bg-gray-50 ">
+                            <div className="px-4 py-2 bg-white rounded-t-lg">
+                                <label htmlFor="comment" className="sr-only">Your comment</label>
+                                <textarea id="comment" rows="2" className="w-full px-0 text-[#043d5d] bg-white border-0 focus:ring-0" placeholder="Write a comment..." value={commentValue} onChange={handleCommentChange}></textarea>
                             </div>
-                            <div class="flex items-center justify-between px-3 py-2 border-t">
-                                <input type="reset" class="inline-flex float-right items-center px-2 text-center text-red-700  border-2 border-red-700 rounded-lg cursor-pointer" value="Clear"></input>
-                                <button type="submit" class="inline-flex float-right items-center py-1.5 px-4 text-center text-white bg-[#043d5d] rounded-lg" onSubmit={handleSubmitComment}>Save</button>
+                            <div className="flex items-center justify-between px-3 py-2 border-t">
+                                <input type="reset" className="inline-flex float-right items-center px-2 text-center text-red-700  border-2 border-red-700 rounded-lg cursor-pointer" value="Clear"></input>
+                                <button className="inline-flex float-right items-center py-1.5 px-4 text-center text-white bg-[#043d5d] rounded-lg" onClick={handleSubmitComment}>Save</button>
                             </div>
                         </div>
                     </form>

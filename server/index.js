@@ -26,14 +26,19 @@ app.get("/",(req, res)=>{
 });
 
 app.post("/comment",(req, res)=>{
-  const { comment } = req.body;
-  const q = "INSERT INTO communitycollegedata (Notes) VALUES (?);";
-  db.query(q, (err, data) => {
+  const Comment = req.body.Comment;
+  const Course = req.body.Course;
+  const Major = req.body.Major;
+  const College = req.body.College;
+  const q = "UPDATE communitycollegedata SET Notes=? where Courses=? and Majors=? and Colleges=?;";
+  db.query(q, [Comment, Course, Major, College], (err, result) => {
     if (err) {
-      console.log(err);
-      return res.json(err);
+      console.error('Error updating item:', err);
+      res.status(500).json({ error: 'An error occurred' });
+      return;
     }
-    return res.json(data);
+    console.log('Item updated:', result);
+    console.log(res.status(200).json(result));
   });
 });
 

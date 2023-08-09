@@ -11,7 +11,7 @@ const RightColumn = () => {
   }, [dispatch]);
   const records = useSelector(getAllRecords);
   console.log(records);
-  const loading = useSelector(getLoadStatus);
+  var loading = useSelector(getLoadStatus);
   const [showPopup, setShowPopup] = useState(false);
   const [selectedRowData, setSelectedRowData] = useState(null);
   const handleRowClick = (rowData) => {

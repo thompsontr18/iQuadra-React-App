@@ -7,7 +7,7 @@ import {
 } from "../../features/recordSlice";
 
 const LeftColumn = () => {
-  const [initialRender, setInitialRender] = useState(true)
+  const [initialRender, setInitialRender] = useState(true);
   const cols = ["College", "Major", "Course", "Link", "BEmail", "PEmail", "BPhone", "PPhone", "Details", "Notes"];
   const [formData, setFormData] = useState({
     CollegeSearch: "",
@@ -16,7 +16,7 @@ const LeftColumn = () => {
     PersonSearch: "",
     SortBy: "Colleges",
     SortOrder: "Ascending",
-    Columns: Array(cols.length).fill(true),
+    Columns: Array(cols.length+1).fill(true),
     SelectionChanged:""
   });
   const [clear, setClear] = useState(true);

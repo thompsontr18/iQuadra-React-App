@@ -42,11 +42,16 @@ const RightColumn = () => {
                 <thead>
                   <tr className="border border-x-2 border-t-2 border-b-2 border-[#043d5d]">
                     {
-                      Object.keys(records[0]).map((col, ind) => (
-                        <th className="p-3 bg-gray-50 text-left text-xs font-medium text-[#043d5d] uppercase tracking-wider" key={ind}>
-                          {col}
-                        </th>
-                      ))
+                      Object.keys(records[0]).map((col, ind) => {
+                        if (col !== "id") {
+                          return (
+                            <th className="p-3 bg-gray-50 text-left text-xs font-medium text-[#043d5d] uppercase tracking-wider" key={ind}>
+                              {col}
+                            </th>
+                          )
+                        }
+                        return null;
+                      })
                     }
                   </tr>
                 </thead>
@@ -54,11 +59,16 @@ const RightColumn = () => {
                   {records.map((cols, index) => (
                     <tr key={index} className="cursor-pointer hover:bg-blue-100 border" onClick={() => handleRowClick(cols)}>
                       {
-                        Object.entries(cols).map(([key, value]) => (
-                          <td className="px-2 py-1 border border-blue-100 whitespace-nowrap" key={key}>
-                            {value}
-                          </td>
-                        ))
+                        Object.entries(cols).map(([key, value]) =>{
+                          if(key!=="id"){
+                            return (
+                              <td className="px-2 py-1 border border-blue-100 whitespace-nowrap" key={key}>
+                                {value}
+                              </td>
+                            )
+                          }
+                          return null;
+                        } )
                       }
                     </tr>
                   ))}

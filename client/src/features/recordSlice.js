@@ -14,13 +14,14 @@ export const fetchAsyncRecords = createAsyncThunk(
 
 export const postComment = createAsyncThunk(
   "records/postComment",
-  async (value) => {
+  async (value, thunkAPI) => {
     console.log("Comment getting passed");
     console.log(value);
     const res = await axios.post("http://localhost:8800/comment", value).catch((err) => {
       console.log(err);
     });
     console.log('Comment Posted');
+    await thunkAPI.dispatch(fetchAsyncRecords());
     return res.data;
   }
 );
@@ -38,7 +39,6 @@ export const fetchSearchInput = createAsyncThunk(
     var state = thunkAPI.getState();
     const getItems = state => state.records.records;
     var data = [...getItems(state)];
-
     //search filters
     if (value.CollegeSearch !== "" || value.MajorsSearch !== "" || value.CourseSearch !== "" || value.PersonSearch !== "") {
       data = data.filter((item) => {
@@ -59,22 +59,13 @@ export const fetchSearchInput = createAsyncThunk(
           : item.Details.toLowerCase().includes(value.PersonSearch.toLowerCase());
       });
     };
-    //Sort
-    // let sortedData = data.sort((a, b) => {
-    //   if (value.SortOrder === "Ascending") {
-    //     return a[value.SortBy].localeCompare(b[value.SortBy]);
-    //   } else {
-    //     return b[value.SortBy].localeCompare(a[value.SortBy]);
-    //   }
-    // });
-    //Column selection
-    data = data.sort((a, b) => {
+    data = data.sort((a, b) => {//Sorting
       if (value.SortOrder === "Ascending") {
         return a[value.SortBy].localeCompare(b[value.SortBy]);
       } else {
         return b[value.SortBy].localeCompare(a[value.SortBy]);
       }
-    }).map(item => {
+    }).map(item => {//Column Selection
       return value.Columns.reduce((result, select, index) => {
         if (select) {
           const key = Object.keys(item)[index];
@@ -90,7 +81,8 @@ export const fetchSearchInput = createAsyncThunk(
 const initialState = {
   records: [],
   display: [],
-  loading: true
+  loading: true,
+  saving:false
 };
 
 const recordSlice = createSlice({
@@ -135,11 +127,11 @@ const recordSlice = createSlice({
     },
     [postComment.pending]: (state) => {
       console.log("Pending");
+      return {...state, saving:true}
     },
-    [postComment.fulfilled]: (state, { payload }) => {
+    [postComment.fulfilled]: (state) => {
       console.log("Fetched Records After Post");
-      console.log(payload);
-      return { ...state, records: payload, display: payload };
+      return { ...state, saving:false };
     },
     [postComment.rejected]: (state, action) => {
       console.log("Post Comment Failed");
@@ -150,5 +142,7 @@ const recordSlice = createSlice({
 
 export const { addRecords } = recordSlice.actions;
 export const getAllRecords = (state) => state.records.display;
+export const getOriginalRecords = (state)=> state.records.records;
 export const getLoadStatus = (state) => state.records.loading;
+export const getSaveStatus = (state)=>state.records.save;
 export default recordSlice.reducer;

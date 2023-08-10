@@ -35,7 +35,6 @@ app.post("/comment",(req, res)=>{
       res.status(500).json({ error: 'An error occurred' });
       return;
     }
-    console.log('Item updated:', result);
     console.log(res.status(200).json(result));
   });
 });

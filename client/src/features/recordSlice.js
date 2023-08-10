@@ -36,6 +36,7 @@ export const fetchOriginalRecords = createAsyncThunk(
 export const fetchSearchInput = createAsyncThunk(
   "records/fetchSearchInput",
   async (value, thunkAPI) => {
+    console.log(value);
     var state = thunkAPI.getState();
     const getItems = state => state.records.records;
     var data = [...getItems(state)];
@@ -74,6 +75,26 @@ export const fetchSearchInput = createAsyncThunk(
         return result;
       }, {});
     });
+    if(value.Distinct===true){
+      function findDistinctObjectsWithId(inputArray) {
+        const distinctObjectsMap = new Map();
+      
+        inputArray.forEach(obj => {
+          const objWithoutId = { ...obj };
+          delete objWithoutId.id;
+      
+          const objKey = JSON.stringify(objWithoutId);
+          if (!distinctObjectsMap.has(objKey)) {
+            distinctObjectsMap.set(objKey, obj);
+          }
+        });
+      
+        const distinctObjectsWithId = Array.from(distinctObjectsMap.values());
+        return distinctObjectsWithId;
+      }
+      data = findDistinctObjectsWithId(data);
+    }
+    
     return data;
   }
 );

@@ -16,8 +16,9 @@ const LeftColumn = () => {
     PersonSearch: "",
     SortBy: "Colleges",
     SortOrder: "Ascending",
-    Columns: Array(cols.length+1).fill(true),
-    SelectionChanged:""
+    Columns: Array(cols.length + 1).fill(true),
+    Distinct: true,
+    SelectionChanged: ""
   });
   const [clear, setClear] = useState(true);
   const dispatch = useDispatch();
@@ -34,7 +35,18 @@ const LeftColumn = () => {
         };
       });
 
-    } else {
+    } else if (name === "Distinct") {
+      setFormData((prevFormData) => {
+        const copy={...prevFormData};
+        const toggle=!copy.Distinct;
+        return {
+          ...prevFormData,
+          [name]: toggle,
+          SelectionChanged: name
+        }
+      });
+    }
+    else {
       setFormData((prevFormData) => ({
         ...prevFormData,
         [name]: value,
@@ -48,10 +60,10 @@ const LeftColumn = () => {
     if (clear && !initialRender) {
       dispatch(fetchOriginalRecords());
     }
-    if(formData.SelectionChanged!=="CollegeSearch" && formData.SelectionChanged!=="MajorsSearch" && formData.SelectionChanged!=="CourseSearch" && formData.SelectionChanged!=="PersonSearch" && !initialRender){
+    if (formData.SelectionChanged !== "CollegeSearch" && formData.SelectionChanged !== "MajorsSearch" && formData.SelectionChanged !== "CourseSearch" && formData.SelectionChanged !== "PersonSearch" && !initialRender) {
       dispatch(fetchSearchInput(formData));
     }
-  }, [clear, dispatch, initialRender,formData]);
+  }, [clear, dispatch, initialRender, formData]);
   const handleSubmit = () => {
     dispatch(fetchSearchInput(formData));
   };
@@ -65,7 +77,8 @@ const LeftColumn = () => {
       SortBy: "Colleges",
       SortOrder: "Ascending",
       Columns: Array(cols.length).fill(true),
-      SelectionChanged:""
+      Distinct: true,
+      SelectionChanged: ""
     });
     setClear(true);
   };
@@ -123,7 +136,7 @@ const LeftColumn = () => {
           </button>
         </div>
       </div>
-      <p className="text-[#043d5d]">Sort By</p>
+      <p className="text-[#043d5d] pt-3">Sort By</p>
       <div className="flex items-center justify-center mt-2 px-3">
         <select
           name="SortBy"
@@ -145,7 +158,7 @@ const LeftColumn = () => {
           <option value="Descending">Z-A</option>
         </select>
       </div>
-      <p className="text-[#043d5d] py-2">Select Columns to Display</p>
+      <p className="text-[#043d5d] pt-4 pb-2">Select Columns to Display</p>
       <div className="grid grid-cols-2">
         {
           cols.map((col, ind) => (
@@ -158,6 +171,13 @@ const LeftColumn = () => {
             </div>
           ))
         }
+      </div>
+      <div className="flex items-center py-2">
+        <span className="flex-shrink-0 text-[#043d5d]">Show Distinct Records</span>
+        <label className="relative inline-flex items-center cursor-pointer ml-auto my-1 pr-1">
+          <input name="Distinct" type="checkbox" value={formData.Distinct} className="sr-only peer" onChange={(event) => handleInputChange(event)} checked={formData.Distinct} />
+          <div className="w-11 h-6 bg-gray-50 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-[#043d5d]"></div>
+        </label>
       </div>
     </div>
   );

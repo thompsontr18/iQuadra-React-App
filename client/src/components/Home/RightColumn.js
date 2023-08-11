@@ -36,7 +36,12 @@ const RightColumn = () => {
     );
   }else if(records.length===0){
     content=(
-      <p>No Records Found</p>
+      <div className="flex flex-col items-center justify-center h-full">
+
+        <div className="bg-white text-[#043d5d] flex py-1 relative rounded-full justify-center items-center w-1/4">
+          <h1 className="text-4xl font-bold text-center">No Records Found</h1>
+        </div>
+      </div>
     )
   }else{
     content=(

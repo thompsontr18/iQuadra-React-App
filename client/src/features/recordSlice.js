@@ -94,7 +94,6 @@ export const fetchSearchInput = createAsyncThunk(
       }
       data = findDistinctObjectsWithId(data);
     }
-    
     return data;
   }
 );

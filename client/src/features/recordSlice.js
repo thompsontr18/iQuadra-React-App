@@ -40,6 +40,8 @@ export const fetchSearchInput = createAsyncThunk(
     var state = thunkAPI.getState();
     const getItems = state => state.records.records;
     var data = [...getItems(state)];
+    console.log("showing data to be operated on");
+    console.log(data);
     //search filters
     if (value.CollegeSearch !== "" || value.MajorsSearch !== "" || value.CourseSearch !== "" || value.PersonSearch !== "") {
       data = data.filter((item) => {
@@ -127,6 +129,8 @@ const recordSlice = createSlice({
     },
     [fetchOriginalRecords.fulfilled]: (state, { payload }) => {
       console.log("Fetched Originals Successfully");
+      console.log(payload);
+      console.log("payload");
       return { ...state, display: payload, loading: false };
     },
     [fetchOriginalRecords.rejected]: (state, action) => {
@@ -139,6 +143,7 @@ const recordSlice = createSlice({
     },
     [fetchSearchInput.fulfilled]: (state, { payload }) => {
       console.log("Fetched Colleges Successfully");
+      console.log(payload);
       return { ...state, display: payload, loading: false };
     },
     [fetchSearchInput.rejected]: (state, action) => {

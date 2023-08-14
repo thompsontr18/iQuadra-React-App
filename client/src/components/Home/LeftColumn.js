@@ -8,7 +8,7 @@ import {
 
 const LeftColumn = () => {
   const [initialRender, setInitialRender] = useState(true);
-  const cols = ["College", "Major", "Course", "Link", "BEmail", "PEmail", "BPhone", "PPhone", "Details", "Notes"];
+  const cols = ["College", "Major", "Course", "Link", "PEmail", "PPhone", "BPhone","BEmail",  "Details", "Notes"];
   const [formData, setFormData] = useState({
     CollegeSearch: "",
     MajorsSearch: "",
@@ -17,7 +17,7 @@ const LeftColumn = () => {
     SortBy: "Colleges",
     SortOrder: "Ascending",
     Columns: Array(cols.length + 1).fill(true),
-    Distinct: true,
+    Distinct: false,
     SelectionChanged: ""
   });
   const [clear, setClear] = useState(true);
@@ -60,7 +60,7 @@ const LeftColumn = () => {
     if (clear && !initialRender) {
       dispatch(fetchOriginalRecords());
     }
-    if (formData.SelectionChanged !== "CollegeSearch" && formData.SelectionChanged !== "MajorsSearch" && formData.SelectionChanged !== "CourseSearch" && formData.SelectionChanged !== "PersonSearch" && !initialRender) {
+    if (formData.SelectionChanged !== "CollegeSearch" && formData.SelectionChanged !== "MajorsSearch" && formData.SelectionChanged !== "CourseSearch" && formData.SelectionChanged !== "PersonSearch" && !initialRender && !clear) {
       dispatch(fetchSearchInput(formData));
     }
   }, [clear, dispatch, initialRender, formData]);
@@ -76,8 +76,8 @@ const LeftColumn = () => {
       PersonSearch: "",
       SortBy: "Colleges",
       SortOrder: "Ascending",
-      Columns: Array(cols.length).fill(true),
-      Distinct: true,
+      Columns: Array(cols.length+1).fill(true),
+      Distinct: false,
       SelectionChanged: ""
     });
     setClear(true);

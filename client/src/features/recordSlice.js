@@ -22,6 +22,7 @@ export const postComment = createAsyncThunk(
     });
     console.log('Comment Posted');
     await thunkAPI.dispatch(fetchAsyncRecords());
+    await thunkAPI.dispatch(fetchSearchInput())
     return res.data;
   }
 );
@@ -35,9 +36,9 @@ export const fetchOriginalRecords = createAsyncThunk(
 
 export const fetchSearchInput = createAsyncThunk(
   "records/fetchSearchInput",
-  async (value, thunkAPI) => {
-    console.log(value);
+  async (val, thunkAPI) => {
     var state = thunkAPI.getState();
+    const value=state.records.formData;
     const getItems = state => state.records.records;
     var data = [...getItems(state)];
     console.log("showing data to be operated on");
@@ -104,13 +105,29 @@ const initialState = {
   records: [],
   display: [],
   loading: true,
-  saving:false
+  saving:false,
+  formData:{
+    CollegeSearch: "",
+    MajorsSearch: "",
+    CourseSearch: "",
+    PersonSearch: "",
+    SortBy: "Colleges",
+    SortOrder: "Ascending",
+    Columns: Array(11).fill(true),
+    Distinct: false,
+    SelectionChanged: ""
+  }
 };
 
 const recordSlice = createSlice({
   name: "records",
   initialState,
-  reducers: {},
+  reducers: {
+    changeFormData:(state,action)=>{
+      console.log(action.payload);
+      return {...state, formData:action.payload};
+    }
+  },
   extraReducers: {
     [fetchAsyncRecords.pending]: (state) => {
       console.log("Pending");
@@ -170,4 +187,6 @@ export const getAllRecords = (state) => state.records.display;
 export const getOriginalRecords = (state)=> state.records.records;
 export const getLoadStatus = (state) => state.records.loading;
 export const getSaveStatus = (state)=>state.records.save;
+export const getFormData=(state)=>state.records.formData;
+export const { changeFormData } = recordSlice.actions;
 export default recordSlice.reducer;

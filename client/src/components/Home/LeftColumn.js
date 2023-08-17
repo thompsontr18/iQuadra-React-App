@@ -1,54 +1,55 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {
   fetchOriginalRecords,
-  fetchSearchInput
+  fetchSearchInput,
+  getFormData,
+  changeFormData
 } from "../../features/recordSlice";
 
 const LeftColumn = () => {
+  const formData=useSelector(getFormData);
   const [initialRender, setInitialRender] = useState(true);
   const cols = ["College", "Major", "Course", "Link", "PEmail", "PPhone", "BPhone","BEmail",  "Details", "Notes"];
-  const [formData, setFormData] = useState({
-    CollegeSearch: "",
-    MajorsSearch: "",
-    CourseSearch: "",
-    PersonSearch: "",
-    SortBy: "Colleges",
-    SortOrder: "Ascending",
-    Columns: Array(cols.length + 1).fill(true),
-    Distinct: false,
-    SelectionChanged: ""
-  });
+  // const [formData, setFormData] = useState({
+  //   CollegeSearch: "",
+  //   MajorsSearch: "",
+  //   CourseSearch: "",
+  //   PersonSearch: "",
+  //   SortBy: "Colleges",
+  //   SortOrder: "Ascending",
+  //   Columns: Array(cols.length + 1).fill(true),
+  //   Distinct: false,
+  //   SelectionChanged: ""
+  // });
   const [clear, setClear] = useState(true);
   const dispatch = useDispatch();
   const handleInputChange = (event, ind) => {
     const { name, value } = event.target;
     if (name === "Columns") {
-      setFormData((prevFormData) => {
-        const newColumns = [...prevFormData.Columns]; // Create a copy of the Columns array
-        newColumns[ind] = !newColumns[ind]; // Toggle the value at the specified index
-        return {
-          ...prevFormData,
+      const newColumns = [...formData.Columns]; // Create a copy of the Columns array
+      newColumns[ind] = !newColumns[ind]; // Toggle the value at the specified index
+      dispatch(changeFormData({
+          ...formData,
           Columns: newColumns, // Update the Columns array in the state
           SelectionChanged: name
-        };
-      });
+        }
+      ));
 
     } else if (name === "Distinct") {
-      setFormData((prevFormData) => {
-        const copy={...prevFormData};
-        const toggle=!copy.Distinct;
-        return {
-          ...prevFormData,
+      const copy={...formData};
+      var toggle=!copy.Distinct;
+      dispatch(changeFormData({
+          ...formData,
           [name]: toggle,
           SelectionChanged: name
         }
-      });
+      ));
     }
     else {
-      setFormData((prevFormData) => ({
-        ...prevFormData,
+      dispatch(changeFormData({
+        ...formData,
         [name]: value,
         SelectionChanged: name
       }));
@@ -61,15 +62,15 @@ const LeftColumn = () => {
       dispatch(fetchOriginalRecords());
     }
     if (formData.SelectionChanged !== "CollegeSearch" && formData.SelectionChanged !== "MajorsSearch" && formData.SelectionChanged !== "CourseSearch" && formData.SelectionChanged !== "PersonSearch" && !initialRender && !clear) {
-      dispatch(fetchSearchInput(formData));
+      dispatch(fetchSearchInput());
     }
   }, [clear, dispatch, initialRender, formData]);
   const handleSubmit = () => {
-    dispatch(fetchSearchInput(formData));
+    dispatch(fetchSearchInput());
   };
   const handleClear = (event) => {
     event.preventDefault();
-    setFormData({
+    dispatch(changeFormData({
       CollegeSearch: "",
       MajorsSearch: "",
       CourseSearch: "",
@@ -79,7 +80,7 @@ const LeftColumn = () => {
       Columns: Array(cols.length+1).fill(true),
       Distinct: false,
       SelectionChanged: ""
-    });
+    }));
     setClear(true);
   };
   return (
@@ -184,3 +185,5 @@ const LeftColumn = () => {
 };
 
 export default LeftColumn;
+
+

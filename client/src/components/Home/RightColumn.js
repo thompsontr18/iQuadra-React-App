@@ -96,3 +96,4 @@ const RightColumn = () => {
   )
 };
 export default RightColumn;
+

@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-
+//trigers get request to fetch all the records
 export const fetchAsyncRecords = createAsyncThunk(
   "records/fetchAsyncRecords",
   async () => {
@@ -11,7 +11,7 @@ export const fetchAsyncRecords = createAsyncThunk(
     return res.data;
   }
 );
-
+//trigers post request to update notes
 export const postComment = createAsyncThunk(
   "records/postComment",
   async (value, thunkAPI) => {
@@ -26,14 +26,14 @@ export const postComment = createAsyncThunk(
     return res.data;
   }
 );
-
+// makes a copy of original records and updates display to be used for filtering
 export const fetchOriginalRecords = createAsyncThunk(
   "records/fetchOriginalRecords",
   async (value, thunkAPI) => {
     return thunkAPI.getState().records.records;
   }
 );
-
+// handles when there is change in filter criteria
 export const fetchSearchInput = createAsyncThunk(
   "records/fetchSearchInput",
   async (val, thunkAPI) => {
@@ -123,6 +123,7 @@ const recordSlice = createSlice({
   name: "records",
   initialState,
   reducers: {
+    // to change formData whenever something is changes in LeftColumn.js
     changeFormData:(state,action)=>{
       console.log(action.payload);
       return {...state, formData:action.payload};

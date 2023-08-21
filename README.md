@@ -16,9 +16,7 @@ This React app is a portal for iQuadra's marketing team to access web scrapped d
 
 - [About](#about)
 - [Features](#features)
-- [Getting Started](#getting-started)
-  - [Prerequisites](#prerequisites)
-  - [Installation](#installation)
+- [Prerequisites](#prerequisites)
 - [Usage](#usage)
 - [Acknowledgements](#acknowledgements)
 
@@ -37,28 +35,21 @@ Key features of our application:
 - ```Popup Component:``` Clients can click on any record for a popup with all the data, clickable links, and even a place for notes!
 - ```Social Media Footer:``` In the footer, all of iQuadra's social medias are linked for those interested.
 
-## Getting Started
+## Prerequisites
 
-Instructions to help developers set up and run our project locally.
-
-### Prerequisites
-
-Outline the software and tools that need to be installed beforehand. For example:
+Software and tools that need to be installed beforehand.
 
 - Node.js and npm: [Installation Guide](https://nodejs.org/)
 - React development environment: `npm install -g create-react-app`
+- MySQL: [Setup Guide](https://www.educative.io/answers/how-to-implement-a-server-for-reactjs-and-mysql-application)
+- Tailwind CSS: [Installation Guide](https://tailwindcss.com/docs/guides/create-react-app)
+- Express.js: [Installation Guide](https://expressjs.com/en/starter/installing.html)
+- Nodemon: `npm install -g nodemon`
 
-### Installation
-
-Step-by-step instructions on how to clone, install dependencies, and start the app.
-
-1. Clone the repository:
-   ```sh
-   git clone https://github.com/[username]/[repo-name].git
-   cd [repo-name]
 
 ## Usage
 
+![Left Column](Image URL)
 Explain how to use our app. code snippets, screenshots, or GIFs to demonstrate functionality.
 
 ## Acknowledgements

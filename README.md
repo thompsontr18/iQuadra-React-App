@@ -49,8 +49,8 @@ Software and tools that need to be installed beforehand.
 
 ## Usage
 
-![Left Column](Image URL)
-Explain how to use our app. code snippets, screenshots, or GIFs to demonstrate functionality.
+<img src="https://github.com/thompsontr18/iQuadra-React-App/blob/main/client/public/leftColumn.png" alt="leftColumn" width="212" height="350">
+Our left column is full of filter criteria to help the user find the exact data they want. With multilevel search fields, a sort by feature, and column selection, our data can be filtered however you want 
 
 ## Acknowledgements
 

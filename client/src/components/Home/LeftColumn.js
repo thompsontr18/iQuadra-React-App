@@ -9,22 +9,13 @@ import {
 } from "../../features/recordSlice";
 
 const LeftColumn = () => {
+  //fetching formdata, initializing variables and local states
   const formData=useSelector(getFormData);
   const [initialRender, setInitialRender] = useState(true);
   const cols = ["College", "Major", "Course", "Link", "PEmail", "PPhone", "BPhone","BEmail",  "Details", "Notes"];
-  // const [formData, setFormData] = useState({
-  //   CollegeSearch: "",
-  //   MajorsSearch: "",
-  //   CourseSearch: "",
-  //   PersonSearch: "",
-  //   SortBy: "Colleges",
-  //   SortOrder: "Ascending",
-  //   Columns: Array(cols.length + 1).fill(true),
-  //   Distinct: false,
-  //   SelectionChanged: ""
-  // });
   const [clear, setClear] = useState(true);
   const dispatch = useDispatch();
+  //Updates formdata in tool kit
   const handleInputChange = (event, ind) => {
     const { name, value } = event.target;
     if (name === "Columns") {
@@ -57,6 +48,7 @@ const LeftColumn = () => {
     setClear(false);
     setInitialRender(false);
   };
+  //Used to re-render content whenever data changes
   useEffect(() => {
     if (clear && !initialRender) {
       dispatch(fetchOriginalRecords());
@@ -68,6 +60,7 @@ const LeftColumn = () => {
   const handleSubmit = () => {
     dispatch(fetchSearchInput());
   };
+  //Handles Form Clear
   const handleClear = (event) => {
     event.preventDefault();
     dispatch(changeFormData({

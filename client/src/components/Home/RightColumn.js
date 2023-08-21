@@ -5,6 +5,7 @@ import { fetchAsyncRecords, getAllRecords, getLoadStatus } from "../../features/
 import PopUp from "./PopUp";
 
 const RightColumn = () => {
+  // fetching varibles from toolkit state and also initialzing few local variables
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchAsyncRecords());
@@ -14,14 +15,17 @@ const RightColumn = () => {
   var loading = useSelector(getLoadStatus);
   const [showPopup, setShowPopup] = useState(false);
   const [selectedRowData, setSelectedRowData] = useState(null);
+  // Handle Row Click
   const handleRowClick = (rowData) => {
     setSelectedRowData(rowData);
     setShowPopup(true);
   };
+  // When popup is closed
   const handleClosePopup = () => {
     setShowPopup(false);
   };
   let content;
+  // when the content is loading
   if(loading){
     content=(
       <div className="flex flex-col items-center justify-center h-full">
@@ -34,7 +38,9 @@ const RightColumn = () => {
         </div>
       </div>
     );
-  }else if(records.length===0){
+  }
+  // when no results are found
+  else if(records.length===0){
     content=(
       <div className="flex flex-col items-center justify-center h-full">
 
@@ -43,7 +49,9 @@ const RightColumn = () => {
         </div>
       </div>
     )
-  }else{
+  }
+  // When results get loaded and there are matching records
+  else{
     content=(
       <div className="px-4 h-96 flex flex-grow overflow-y-scroll overflow-scroll">
         <table className="table-auto">

@@ -5,11 +5,14 @@ import { getOriginalRecords, getSaveStatus } from '../../features/recordSlice';
 
 
 const PopUp = ({ value, onClose }) => {
+    // fetching few variables from toolkit and initializing required local variables
     const dispatch = useDispatch();
     const records = useSelector(getOriginalRecords);
     const save = useSelector(getSaveStatus);
+    // Used to fetch complete details of the row, {value} might not have all the details when we toggle columns
     const desiredRecord = records.find(obj => obj.id === value.id);
     const [commentValue, setCommentValue] = useState(desiredRecord.Notes);
+    // Triggered when changes in notes are posted
     const handleSubmitComment = (event) => {
         event.preventDefault();
         dispatch(postComment({
@@ -17,6 +20,7 @@ const PopUp = ({ value, onClose }) => {
             "id": desiredRecord.id
         }));
     };
+    // Tracking Notes textbox changes
     const handleCommentChange = (event) => {
         setCommentValue(event.target.value);
     };

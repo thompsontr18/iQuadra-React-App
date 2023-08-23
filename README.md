@@ -22,7 +22,7 @@ This React app is a portal for iQuadra's marketing team to access web scrapped d
 
 ## About
 
-Welcome to our React app – the ultimate destination for college marketing. Crafted by the dedicated team at iQuadra, this innovative platform redefines the way you explore educational marketing. Our portal is meticulously designed to assist you in marketing your product to the right consumers. As of August 2023, our portal only includes community colleges in Georgia, but will be nationwide in the future.
+Welcome to our React app – the ultimate destination for college marketing. Crafted by our team at iQuadra, this innovative platform redefines the way you explore educational marketing. Our portal is meticulously designed to assist you in marketing your product to the right consumers. As of August 2023, our portal only includes community colleges in Georgia, but will be nationwide in the future.
 
 ## Features
 
